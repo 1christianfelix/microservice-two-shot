@@ -2,8 +2,13 @@
 
 Team:
 
+<<<<<<< HEAD
 - Avisha - shoes
 - Christian - hats
+=======
+- Person 1 - Which microservice?
+- Person 2 - Which microservice?
+>>>>>>> main
 
 ## Design
 
@@ -18,3 +23,5 @@ microservice, here.
 
 Explain your models and integration with the wardrobe
 microservice, here.
+
+sdfhsdjkfhsdjkf
