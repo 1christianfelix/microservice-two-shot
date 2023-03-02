@@ -2,10 +2,12 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+- Avisha - shoes
+- Christian - hats
 
 ## Design
+
+-poll items from the wardrobe and bin api to update our hat and shoe models. those models will then return JSON objects in the frontend development. we will use react to create components to show a user interface for display the properties of the clothing items.
 
 ## Shoes microservice
 
