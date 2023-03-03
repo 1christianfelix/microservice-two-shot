@@ -11,7 +11,7 @@ django.setup()
 
 # Import models from hats_rest, here.
 # from shoes_rest.models import Something
-from api.shoes_rest.models import BinVO
+from shoes_rest.models import BinVO
 
 
 def poll():
@@ -19,7 +19,7 @@ def poll():
         print('Shoes poller polling for data')
         try:
             # Write your polling logic, here
-            url = "http://wardrobe-api:8000"
+            url = "http://wardrobe-api:8000/api/bins/"
             response = requests.get(url)
             content = json.loads(response.content)
 
