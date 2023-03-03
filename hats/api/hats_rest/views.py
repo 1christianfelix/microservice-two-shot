@@ -36,10 +36,10 @@ class HatDetailEncoder(ModelEncoder):
 
 @require_http_methods(["GET", "POST"])
 def api_list_hats(request, location_vo_id=None):
+    print('--------', location_vo_id)
+    print(LocationVO.objects.all())
     if request.method == "GET":
         # print('---------test')
-        # print('--------', location_vo_id)
-        # print(LocationVO.objects.all())
         # print(LocationVO.objects.get(import_href=f"/api/locations/{location_vo_id}/"))
         # print(Hat.objects.all())
 
@@ -69,6 +69,7 @@ def api_list_hats(request, location_vo_id=None):
                 status=400
             )
         hats = Hat.objects.create(**content)
+        print('___', hats)
         return JsonResponse(
             hats, encoder=HatDetailEncoder, safe=False
         )
