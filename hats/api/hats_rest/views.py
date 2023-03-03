@@ -77,7 +77,15 @@ def api_list_hats(request, location_vo_id=None):
 
 @require_http_methods(['GET', 'DELETE'])
 def api_show_hat(request, id):
-    pass
+    if request.method == "GET":
+        hat = Hat.objects.get(id=id)
+        return JsonResponse(
+            hat, encoder=HatDetailEncoder, safe=False
+        )
+    else:
+        count, _ = Hat.objects.filter(id=id).delete()
+        return JsonResponse({'deleted': count > 0})
+
 
 
 
