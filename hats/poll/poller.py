@@ -11,7 +11,7 @@ django.setup()
 
 # Import models from hats_rest, here.
 # from hats_rest.models import Something
-from api.hats_rest.models import LocationVO
+from hats_rest.models import LocationVO
 
 
 def poll():
@@ -19,10 +19,12 @@ def poll():
         print('Hats poller polling for data')
         try:
             # Write your polling logic, here
-            url = "http://wardrobe-api:8000"
+            url = "http://wardrobe-api:8000/api/locations/"
             response = requests.get(url)
             content = json.loads(response.content)
+            print(content)
             for location in content['locations']:
+                print(location)
                 LocationVO.objects.update_or_create(
                     import_href=location['href'],
                     defaults=
