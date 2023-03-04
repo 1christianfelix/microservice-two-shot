@@ -16,9 +16,9 @@ function HatColumn(props) {
               <p className="card-text">{hat.fabric}</p>
             </div>
             <div className="card-footer">
-              <p>{hat.location.closet_name}</p>
-              <p>{hat.location.section_number}</p>
-              <p>{hat.location.shelf_number}</p>
+              <p>Closet: {hat.location.closet_name}</p>
+              <p>Section: {hat.location.section_number}</p>
+              <p>Shelf: {hat.location.shelf_number}</p>
             </div>
             <DeleteButton type="button" href={hat.href}></DeleteButton>
           </div>
@@ -102,7 +102,7 @@ class HatList extends React.Component {
             <p className="lead mb-4">Look at these hats!</p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
               <Link
-                to="/attendees/new"
+                to="/hats/new"
                 className="btn btn-primary btn-lg px-4 gap-3"
               >
                 Make hats here!
