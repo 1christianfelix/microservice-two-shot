@@ -42,13 +42,12 @@ def api_list_hats(request, location_vo_id=None):
     print('--------', location_vo_id)
     print(LocationVO.objects.all())
     if request.method == "GET":
-        # print('---------test')
-        # print(LocationVO.objects.get(import_href=f"/api/locations/{location_vo_id}/"))
-        # print(Hat.objects.all())
 
-        # print('---------',LocationVO.objects.all())
-        hats = Hat.objects.filter(location=location_vo_id)
-        print('--------', hats)
+        if(location_vo_id == None):
+            hats = Hat.objects.all()
+        else:
+            hats = Hat.objects.filter(location=location_vo_id)
+
         return JsonResponse(
             {'hats': hats}, encoder=HatListEncoder, safe=False
         )
@@ -83,7 +82,7 @@ def api_show_hat(request, id):
     if request.method == "GET":
         hat = Hat.objects.get(id=id)
         return JsonResponse(
-            hat, encoder=HatDetailEncoder, safe=False
+            {"hat": hat}, encoder=HatDetailEncoder, safe=False
         )
     else:
         count, _ = Hat.objects.filter(id=id).delete()
