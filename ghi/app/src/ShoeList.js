@@ -22,9 +22,9 @@ function ShoesColumn(props) {
               <p className="card-text">{shoe.manufacturer}</p>
             </div>
             <div className="card-footer">
-              <p>{shoe.bin.closet_name}</p>
-              <p>{shoe.bin.bin_number}</p>
-              <p>{shoe.bin.bin_size}</p>
+              <p>Closet: {shoe.bin.closet_name}</p>
+              <p>Bin: {shoe.bin.bin_number}</p>
+              <p>Size: {shoe.bin.bin_size}</p>
             </div>
             <DeleteButton type="button" href={shoe.href}></DeleteButton>
           </div>
@@ -112,7 +112,7 @@ class ShoeList extends React.Component {
             </p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
               <Link
-                to="/attendees/new"
+                to="/shoes/new"
                 className="btn btn-primary btn-lg px-4 gap-3"
               >
                 Create some new ones b
