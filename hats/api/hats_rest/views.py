@@ -11,11 +11,14 @@ from .models import LocationVO, Hat
 
 class LocationVOListEncoder(ModelEncoder):
     model = LocationVO
-    properties = ['closet_name', 'section_number', 'shelf_number', 'import_href']
+    properties = ['closet_name', 'section_number',
+                  'shelf_number', 'import_href']
+
 
 class HatListEncoder(ModelEncoder):
     model = Hat
     properties = ['style_name']
+
 
 class HatDetailEncoder(ModelEncoder):
     model = Hat
@@ -45,10 +48,10 @@ def api_list_hats(request, location_vo_id=None):
 
         # print('---------',LocationVO.objects.all())
         hats = Hat.objects.filter(location=location_vo_id)
-        print('--------',hats)
+        print('--------', hats)
         return JsonResponse(
             {'hats': hats}, encoder=HatListEncoder, safe=False
-            )
+        )
     else:
         content = json.loads(request.body)
         # print(LocationVO.objects.all())
@@ -59,7 +62,7 @@ def api_list_hats(request, location_vo_id=None):
         # print(Hat.objects.all())
         try:
 
-            location_href = f"/api/locations/{location_vo_id}/"
+            location_href = content["location"]
             print(location_href)
             location = LocationVO.objects.get(import_href=location_href)
             content['location'] = location
@@ -75,7 +78,6 @@ def api_list_hats(request, location_vo_id=None):
         )
 
 
-
 @require_http_methods(['GET', 'DELETE'])
 def api_show_hat(request, id):
     if request.method == "GET":
@@ -86,8 +88,6 @@ def api_show_hat(request, id):
     else:
         count, _ = Hat.objects.filter(id=id).delete()
         return JsonResponse({'deleted': count > 0})
-
-
 
 
 @require_http_methods(["GET", "POST"])
