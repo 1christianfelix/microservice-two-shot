@@ -1,30 +1,24 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import DeleteButton from './DeleteButton';
+import DeleteButton from "./DeleteButton";
 
 function ShoesColumn(props) {
-
   return (
     <div className="col-4">
       {props.list.map((data) => {
         const shoe = data.shoe;
         return (
           <div key={shoe.href} className="card mb-3 shadow">
-            <img
-              src={shoe.pictureURL}
-              className="card-img-top"
-            />
+            <img src={shoe.pictureURL} className="card-img-top" />
             <div className="card-body">
               <h5 className="card-title">{shoe.model_name}</h5>
-              <h6 className="card-subtitle mb-2 text-muted">
-                {shoe.color}
-              </h6>
+              <h6 className="card-subtitle mb-2 text-muted">{shoe.color}</h6>
               <p className="card-text">{shoe.manufacturer}</p>
             </div>
             <div className="card-footer">
-              <p>Closet: {shoe.bin.closet_name}</p>
-              <p>Bin: {shoe.bin.bin_number}</p>
-              <p>Size: {shoe.bin.bin_size}</p>
+              <p className="mb-1">Closet: {shoe.bin.closet_name}</p>
+              <p className="mb-1">Bin: {shoe.bin.bin_number}</p>
+              <p>Bin Size: {shoe.bin.bin_size}</p>
             </div>
             <DeleteButton type="button" href={shoe.href}></DeleteButton>
           </div>
@@ -48,8 +42,6 @@ class ShoeList extends React.Component {
     try {
       const response = await fetch(url);
       if (response.ok) {
-
-
         // Get the list of conferences
         const data = await response.json();
 
@@ -107,9 +99,7 @@ class ShoeList extends React.Component {
           />
           <h1 className="display-5 fw-bold">Shoe House</h1>
           <div className="col-lg-6 mx-auto">
-            <p className="lead mb-4">
-              You need new shoes seriously.
-            </p>
+            <p className="lead mb-4">You need new shoes seriously.</p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
               <Link
                 to="/shoes/new"
@@ -132,13 +122,5 @@ class ShoeList extends React.Component {
     );
   }
 }
-
-
-
-
-
-
-
-
 
 export default ShoeList;

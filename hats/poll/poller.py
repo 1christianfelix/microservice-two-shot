@@ -1,3 +1,4 @@
+from hats_rest.models import LocationVO
 import django
 import os
 import sys
@@ -11,7 +12,6 @@ django.setup()
 
 # Import models from hats_rest, here.
 # from hats_rest.models import Something
-from hats_rest.models import LocationVO
 
 
 def poll():
@@ -22,13 +22,10 @@ def poll():
             url = "http://wardrobe-api:8000/api/locations/"
             response = requests.get(url)
             content = json.loads(response.content)
-            print(content)
             for location in content['locations']:
-                print(location)
                 LocationVO.objects.update_or_create(
                     import_href=location['href'],
-                    defaults=
-                    {
+                    defaults={
                         'closet_name': location['closet_name'],
                         'section_number': location['section_number'],
                         'shelf_number': location['shelf_number'],

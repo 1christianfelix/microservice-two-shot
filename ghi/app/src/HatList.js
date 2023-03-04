@@ -16,8 +16,8 @@ function HatColumn(props) {
               <p className="card-text">{hat.fabric}</p>
             </div>
             <div className="card-footer">
-              <p>Closet: {hat.location.closet_name}</p>
-              <p>Section: {hat.location.section_number}</p>
+              <p className="mb-1">Closet: {hat.location.closet_name}</p>
+              <p className="mb-1">Section: {hat.location.section_number}</p>
               <p>Shelf: {hat.location.shelf_number}</p>
             </div>
             <DeleteButton type="button" href={hat.href}></DeleteButton>

@@ -1,14 +1,16 @@
 import React from "react";
 
 const DeleteButton = (props) => {
-  async function deleteShoe() {
+  // props.href
+  let url = null;
+  if (props.href.includes("shoes")) {
+    url = `http://localhost:8080${props.href}`;
+  } else {
+    url = `http://localhost:8090${props.href}`;
+  }
+
+  async function deleteItem() {
     // props.href
-    const id = props.href.match(/(\d+)/)[0];
-    const url = `http://localhost:8080/api/shoes/${id}/`;
-  async function deleteHat() {
-    // props.href
-    const id = props.href.match(/(\d+)/)[0];
-    const url = `http://localhost:8090/api/hats/${id}/`;
     try {
       const response = await fetch(url, { method: "delete" });
       if (response.ok) {
@@ -21,9 +23,8 @@ const DeleteButton = (props) => {
   }
 
   return (
-    <button type="button" onClick={deleteShoe} className="btn btn-danger">
-    <button type="button" onClick={deleteHat} className="btn btn-danger">
-      Danger
+    <button type="button" onClick={deleteItem} className="btn btn-danger">
+      Exile this poor item?
     </button>
   );
 };
