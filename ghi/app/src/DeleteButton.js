@@ -5,6 +5,10 @@ const DeleteButton = (props) => {
     // props.href
     const id = props.href.match(/(\d+)/)[0];
     const url = `http://localhost:8080/api/shoes/${id}/`;
+  async function deleteHat() {
+    // props.href
+    const id = props.href.match(/(\d+)/)[0];
+    const url = `http://localhost:8090/api/hats/${id}/`;
     try {
       const response = await fetch(url, { method: "delete" });
       if (response.ok) {
@@ -18,6 +22,7 @@ const DeleteButton = (props) => {
 
   return (
     <button type="button" onClick={deleteShoe} className="btn btn-danger">
+    <button type="button" onClick={deleteHat} className="btn btn-danger">
       Danger
     </button>
   );
